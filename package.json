@@ -1,6 +1,5 @@
 {
   "name": "casino",
-  "version": "1",
   "description": "demonstrate multi-armed bandit problem",
   "main": "js/app.js",
   "dependencies": {
