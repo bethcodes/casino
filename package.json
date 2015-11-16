@@ -1,7 +1,7 @@
 {
-  "name": "newapp",
+  "name": "casino",
   "version": "1",
-  "description": "template for a web page",
+  "description": "demonstrate multi-armed bandit problem",
   "main": "js/app.js",
   "dependencies": {
     "classnames": "^2.1.3",

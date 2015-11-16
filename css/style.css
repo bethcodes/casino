@@ -1,0 +1,15 @@
+.counter {
+  float:right;
+}
+
+.machine {
+  background-color:black;
+  height:50px;
+  width:50px;
+  margin:10px;
+}
+
+.casino {
+  display:flex;
+  flex-direction:row;
+}
