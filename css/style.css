@@ -9,7 +9,22 @@
   margin:10px;
 }
 
+.info {
+  display:flex;
+  justify-content: space-between;
+}
+
 .casino {
   display:flex;
   flex-direction:row;
+}
+
+.histogram {
+  display:flex;
+  flex-direction:row;
+}
+
+.histogram div {
+    background-color: yellow;
+    margin: 1px;
 }

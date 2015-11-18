@@ -1,23 +1,24 @@
 var React = require('react');
 var Bandit = require('./Bandit.react');
 var Pulls = require('./Pulls.react');
+var Payoff = require('./Payoff.react');
+var Bot = require('./Bot.react');
+var Histogram = require("./Histogram.react");
+var Casino = require("./Casino.react");
 
 var CasinoApp = React.createClass({
   /**
    * @return {object}
    */
    render: function() {
-     var Pull = <Pulls />;
      return (
        <div>
-         {Pull}
-         <div className="casino">
-           <Bandit />
-           <Bandit />
-           <Bandit />
-           <Bandit />
+         <div className="info">
+           <Payoff type="user"/>
+           <Bot type="computer"/>
+           <Pulls />
          </div>
-         <div className="payoff">0</div>
+         <Casino />
        </div>
      );
    }

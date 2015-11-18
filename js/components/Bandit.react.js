@@ -1,16 +1,15 @@
 
 var React = require('react');
-var $ = require('jQuery');
+var Machine = require('./Machine.react');
+var Histogram = require("./Histogram.react");
 
-var Bandit = React.createClass({ 
-  handleClick: function(index) {
-    console.log('fired');
-    $(document).trigger('pullMade');
-  },
- 
+var Bandit = React.createClass({
   render: function() {
     return (
-      <div className="machine" onClick={this.handleClick}></div>
+        <div>
+           <Machine index={this.props.index} />
+           <Histogram index={this.props.index} />
+        </div>
     );
   }
 });

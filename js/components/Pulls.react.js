@@ -7,12 +7,15 @@ var Pulls = React.createClass({
       pulls: 50
     };
   },
-  render: function() {
-    $(document).on('pullMade', function() {
-     console.log('dec');
+
+  updatePullsRemaining: function(event, value) {
+     if(this.state.pulls <= 1) {
+        $(document).trigger("pullsComplete");
+     }
      this.setState({pulls: this.state.pulls - 1});
-     console.log(this.state.pulls);
-    }.bind(this));
+  },
+  render: function() {
+    $(document).on('pullMade', this.updatePullsRemaining);
     return (
       <div className="counter">{this.state.pulls}</div>     
     );
