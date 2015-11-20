@@ -5,6 +5,7 @@ var Payoff = require('./Payoff.react');
 var Bot = require('./Bot.react');
 var Histogram = require("./Histogram.react");
 var Casino = require("./Casino.react");
+var PlayAgain = require("./PlayAgain.react");
 
 var CasinoApp = React.createClass({
   /**
@@ -12,13 +13,14 @@ var CasinoApp = React.createClass({
    */
    render: function() {
      return (
-       <div>
+       <div className="pageContent">
          <div className="info">
            <Payoff type="user"/>
            <Bot type="computer"/>
            <Pulls />
          </div>
          <Casino />
+         <PlayAgain />
        </div>
      );
    }

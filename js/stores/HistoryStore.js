@@ -7,20 +7,25 @@ var HistoryStore = function() {
     var banditIndexes = ["1", "2", "3", "4"]
       , _histories = {}
       , _payoffs = {}
+      , _averages = {}
       , _totalUserScore = 0
       ;
 
       banditIndexes.forEach(function(index) {
         _histories[index] = {};
+        _averages[index] = Math.floor(Math.random()*5)+1;
         _payoffs[index] = function() {
-            var mean = Math.floor(Math.random()*5)+1;
-            return Math.abs(Math.floor(PD.rnorm(1, mean, 1)[0]));
+            return Math.abs(Math.floor(PD.rnorm(1, _averages[index], 1)[0]));
         };
       });
 
     return assign({}, EventEmitter.prototype, {
         getBanditIndexes: function() {
             return banditIndexes;
+        },
+
+        getAverage: function(bandit_id) {
+            return _averages[bandit_id];
         },
 
         getPayoffForBandit: function(bandit_id) {

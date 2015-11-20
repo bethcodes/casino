@@ -2,7 +2,6 @@
 var React = require('react');
 var $ = require('jQuery');
 var HistoryStore = require('../stores/HistoryStore');
-var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var Bot = React.createClass({
   componentWillMount: function() {
