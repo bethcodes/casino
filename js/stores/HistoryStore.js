@@ -5,21 +5,35 @@ var PD = require("probability-distributions");
 
 var HistoryStore = function() {
     var banditIndexes = ["1", "2", "3", "4"]
-      , _histories = {}
-      , _payoffs = {}
-      , _averages = {}
-      , _totalUserScore = 0
+      , initialPulls = 5
+      , _histories
+      , _payoffs
+      , _averages
+      , _totalUserScore
+      , _pullsRemaining
+      , _initialize = function() {
+        _histories = {};
+        _payoffs = {};
+        _averages = {};
+        _totalUserScore = 0;
+        _pullsRemaining = 5;
+        banditIndexes.forEach(function(index) {
+              _histories[index] = {};
+              _averages[index] = Math.floor(Math.random()*5)+1;
+              _payoffs[index] = function() {
+                  return Math.abs(Math.floor(PD.rnorm(1, _averages[index], 1)[0]));
+              };
+            });
+        }
       ;
 
-      banditIndexes.forEach(function(index) {
-        _histories[index] = {};
-        _averages[index] = Math.floor(Math.random()*5)+1;
-        _payoffs[index] = function() {
-            return Math.abs(Math.floor(PD.rnorm(1, _averages[index], 1)[0]));
-        };
-      });
+      _initialize()
 
     return assign({}, EventEmitter.prototype, {
+        getPullsRemaining: function() {
+            return _pullsRemaining;
+        },
+
         getBanditIndexes: function() {
             return banditIndexes;
         },
@@ -43,35 +57,63 @@ var HistoryStore = function() {
        * @param {function} callback
        */
       addChangeListener: function(callback) {
-        this.on("history_changed", callback);
+        this.on("historyChanged", callback);
+      },
+
+      /**
+       * @param {function} callback
+       */
+      addGameEndedListener: function(callback) {
+        this.on("gameOver", callback);
+      },
+
+      /**
+       * @param {function} callback
+       */
+      addGameResetListener: function(callback) {
+        this.on("gameReset", callback);
       },
 
       getUserScore: function() {
         return _totalUserScore;
       },
 
-      addPayoff: function(action) {
+      executePull: function(action) {
         var bandit_id = action.bandit_id
           , payoff = this.getPayoffForBandit(bandit_id)
           , history = _histories[bandit_id] || {};
 
           _totalUserScore += payoff;
+          _pullsRemaining -= 1;
+          if(_pullsRemaining <= 0) {
+            this.emit("gameOver");
+          }
 
           var initialValue = history[payoff];
           history[payoff] = initialValue ? initialValue + 1 : 1
           _histories[bandit_id] = history;
 
-        this.emit("history_changed");
+        this.emit("historyChanged");
+      },
+
+      reset: function() {
+        _initialize()
+        console.log("reset triggered");
+        this.emit("gameReset")
       }
     });
 }();
 
+HistoryStore.setMaxListeners(20);
 
 AppDispatcher.register(function(action) {
-    if(action.actionType !== "pullMade") {
-        return;
+    if(action.actionType === "pullMade") {
+        HistoryStore.executePull(action);
     }
-    HistoryStore.addPayoff(action);
+
+    if(action.actionType === "triggerReplay") {
+        HistoryStore.reset();
+    }
 });
 
 module.exports = HistoryStore;

@@ -1,12 +1,13 @@
 var React = require('react');
 var $ = require('jQuery');
 var PD = require("probability-distributions");
-var Payoff = require("../actions/Payoff");
+var Pull = require("../actions/Pull");
 var HistoryStore = require('../stores/HistoryStore');
 
 var Machine = React.createClass({
   componentWillMount: function() {
-    $(document).on("pullsComplete", this.playComplete);
+    HistoryStore.addGameEndedListener(this.playComplete);
+    HistoryStore.addGameResetListener(this.reset);
   },
 
   getInitialState: function() {
@@ -18,8 +19,12 @@ var Machine = React.createClass({
 
   handleClick: function(index) {
     if (!this.state.revealed) {
-        Payoff.add(this.props.index);
+        Pull.trigger(this.props.index);
     }
+  },
+
+  reset: function() {
+    this.setState(this.getInitialState());
   },
 
   playComplete: function() {
@@ -27,22 +32,19 @@ var Machine = React.createClass({
   },
 
   render: function() {
-    $(document).on("pullsComplete", this.playComplete);
-    if (!this.state.revealed) {
-        return (
-            <div>
-              <button className="machine" onClick={this.state.clickHandler}></button>
-            </div>
-        );
-    } else {
+    var content = "";
+    var className = "machine";
+    if (this.state.revealed) {
         var revealedAverage = HistoryStore.getAverage(this.props.index);
-        var revealedDiv = (<div className="average">{revealedAverage}</div>);
-        return (
-            <div>
-              <button className="machine revealed" onClick={this.state.clickHandler}>{revealedDiv}</button>
-            </div>
-        );
+        content = (<div className="average">{revealedAverage}</div>);
+        className += " revealed";
     }
+
+    return (
+        <div>
+          <button className={className} onClick={this.handleClick}>{content}</button>
+        </div>
+    );
   }
 });
 

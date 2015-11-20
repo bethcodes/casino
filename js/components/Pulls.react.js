@@ -9,15 +9,12 @@ var Pulls = React.createClass({
 
   getInitialState: function() {
     return {
-      pulls: 5
+      pulls: HistoryStore.getPullsRemaining()
     };
   },
 
   updatePullsRemaining: function() {
-     if(this.state.pulls <= 1) {
-        $(document).trigger("pullsComplete");
-     }
-     this.setState({pulls: this.state.pulls - 1});
+     this.setState({pulls: HistoryStore.getPullsRemaining()});
   },
 
   render: function() {

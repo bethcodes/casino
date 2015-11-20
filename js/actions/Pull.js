@@ -1,7 +1,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
-var Payoff = {
-    add: function(bandit_id) {
+var Pull = {
+    trigger: function(bandit_id) {
         AppDispatcher.dispatch({
           actionType: "pullMade",
           bandit_id: bandit_id
@@ -9,4 +9,4 @@ var Payoff = {
     }
 };
 
-module.exports = Payoff;
+module.exports = Pull;

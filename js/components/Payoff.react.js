@@ -5,7 +5,8 @@ var HistoryStore = require('../stores/HistoryStore');
 
 var Payoff = React.createClass({
   componentWillMount: function() {
-    HistoryStore.addChangeListener(this.onPullMade);
+    HistoryStore.addChangeListener(this.onScoreChanged);
+    HistoryStore.addGameResetListener(this.onScoreChanged);
   },
 
   getInitialState: function() {
@@ -14,7 +15,7 @@ var Payoff = React.createClass({
     };
   },
 
-  onPullMade: function(event, value) {
+  onScoreChanged: function(event, value) {
     this.setState({payoff: HistoryStore.getUserScore()});
   },
 

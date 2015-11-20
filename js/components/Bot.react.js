@@ -6,6 +6,7 @@ var HistoryStore = require('../stores/HistoryStore');
 var Bot = React.createClass({
   componentWillMount: function() {
     HistoryStore.addChangeListener(this.onPullMade);
+    HistoryStore.addGameResetListener(this.reset);
   },
 
   getInitialBeliefs: function() {
@@ -27,6 +28,10 @@ var Bot = React.createClass({
       payoff: 0,
       beliefs: this.getInitialBeliefs()
     };
+  },
+
+  reset: function() {
+    this.setState(this.getInitialState());
   },
 
   getNextPull: function() {

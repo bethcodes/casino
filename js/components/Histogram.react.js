@@ -6,6 +6,7 @@ var $ = require('jQuery');
 var Histogram = React.createClass({
     componentWillMount: function() {
       HistoryStore.addChangeListener(this.historyUpdated);
+      HistoryStore.addGameResetListener(this.historyUpdated);
     },
     getInitialState: function() {
       return {history: {}};

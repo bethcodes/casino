@@ -1,11 +1,11 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
-var Reset = {
+var Replay = {
     trigger: function() {
         AppDispatcher.dispatch({
-          actionType: "reset"
+          actionType: "triggerReplay"
         });
     }
 };
 
-module.exports = Reset;
+module.exports = Replay;
