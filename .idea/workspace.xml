@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7721f1e2-f65a-4744-b592-b2d972d6868a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/actions/Payoff.js" afterPath="$PROJECT_DIR$/js/actions/Pull.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/actions/Reset.js" afterPath="$PROJECT_DIR$/js/actions/Replay.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Bot.react.js" afterPath="$PROJECT_DIR$/js/components/Bot.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Histogram.react.js" afterPath="$PROJECT_DIR$/js/components/Histogram.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Machine.react.js" afterPath="$PROJECT_DIR$/js/components/Machine.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Payoff.react.js" afterPath="$PROJECT_DIR$/js/components/Payoff.react.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/PlayAgain.react.js" afterPath="$PROJECT_DIR$/js/components/PlayAgain.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Pulls.react.js" afterPath="$PROJECT_DIR$/js/components/Pulls.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stores/HistoryStore.js" afterPath="$PROJECT_DIR$/js/stores/HistoryStore.js" />
     </list>
     <ignored path="casino.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,10 +36,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Bot.react.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Bot.react.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/components/Bot.react.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.0197487">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
                   <folding />
                 </state>
@@ -64,11 +56,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="PlayAgain.react.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="PlayAgain.react.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/components/PlayAgain.react.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+                <state vertical-scroll-proportion="0.7307002">
+                  <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
                   <folding />
                 </state>
               </provider>
@@ -132,26 +124,26 @@
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+                  <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Pull.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Pull.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/actions/Pull.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.16157989">
+                  <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="HistoryStore.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="HistoryStore.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.51526034">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
                   <folding />
                 </state>
@@ -181,19 +173,19 @@
         <option value="$PROJECT_DIR$/js/actions/Payoff.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/components/CasinoApp.react.js" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/actions/Reset.js" />
         <option value="$PROJECT_DIR$/js/actions/GameControl.js" />
         <option value="$PROJECT_DIR$/js/stores/PlaysStore.js" />
         <option value="$PROJECT_DIR$/js/actions/Pull.js" />
         <option value="$PROJECT_DIR$/js/components/Pulls.react.js" />
         <option value="$PROJECT_DIR$/js/actions/PlayAgain.js" />
-        <option value="$PROJECT_DIR$/js/components/PlayAgain.react.js" />
         <option value="$PROJECT_DIR$/js/components/Machine.react.js" />
         <option value="$PROJECT_DIR$/js/components/Histogram.react.js" />
         <option value="$PROJECT_DIR$/js/components/Payoff.react.js" />
         <option value="$PROJECT_DIR$/js/components/Bot.react.js" />
         <option value="$PROJECT_DIR$/js/stores/HistoryStore.js" />
+        <option value="$PROJECT_DIR$/js/components/PlayAgain.react.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
       </list>
     </option>
   </component>
@@ -842,14 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/components/Bandit.react.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21543986">
@@ -862,14 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="34" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/actions/Pull.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -914,14 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/components/PlayAgain.react.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/components/Payoff.react.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -930,18 +898,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/components/Bot.react.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0197487">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
+    <entry file="file://$PROJECT_DIR$/js/components/PlayAgain.react.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51526034">
-          <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.7307002">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/actions/Pull.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16157989">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
           <folding />
         </state>
       </provider>

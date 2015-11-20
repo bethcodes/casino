@@ -29,10 +29,8 @@ var PlayAgain = React.createClass({
   },
 
   render: function() {
-    if (this.state.revealed) {
-      return (<button className="playAgain" onClick={this.handleClick}>Play Again</button>);
-    }
-    return false;
+    var className = this.state.revealed ? "playAgain" : "playAgain hidden";
+    return (<button className={className} onClick={this.handleClick}>Play Again</button>);
   }
 });
 

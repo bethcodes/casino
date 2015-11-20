@@ -29,6 +29,18 @@ body {
     transition: all 1s;
 }
 
+.playAgain.hidden {
+    display: none;
+}
+
+.playAgain:hover {
+    box-shadow: 0 0 50px #FFD436;
+}
+
+.playAgain:active {
+    background-color: #BBB;
+}
+
 .playAgain:focus {
     outline:0;
 }
@@ -55,6 +67,15 @@ body {
   border: none;
   background-color: white;
   padding: 0;
+}
+
+.machine:hover:not(.revealed) {
+  background-image: url(/assets/active_slot_machine.png);
+}
+
+.machine:active:not(.revealed) {
+  background-image: url(/assets/slot_machine.png);
+  transition: all 0s;
 }
 
 .machine:focus {
