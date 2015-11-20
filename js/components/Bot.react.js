@@ -64,7 +64,6 @@ var Bot = React.createClass({
     var payoff = HistoryStore.getPayoffForBandit(bandit_id);
     var newBeliefs = this.updatedBeliefs(bandit_id, payoff);
 
-    console.log("got payoff "+payoff+" for bandit "+bandit_id);
     this.setState({payoff: this.state.payoff + payoff, beliefs: newBeliefs});
   },
 

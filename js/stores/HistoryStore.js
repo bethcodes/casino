@@ -5,7 +5,7 @@ var PD = require("probability-distributions");
 
 var HistoryStore = function() {
     var banditIndexes = ["1", "2", "3", "4"]
-      , initialPulls = 5
+      , initialPulls = 50
       , _histories
       , _payoffs
       , _averages
@@ -16,7 +16,7 @@ var HistoryStore = function() {
         _payoffs = {};
         _averages = {};
         _totalUserScore = 0;
-        _pullsRemaining = 5;
+        _pullsRemaining = initialPulls;
         banditIndexes.forEach(function(index) {
               _histories[index] = {};
               _averages[index] = Math.floor(Math.random()*5)+1;
@@ -98,7 +98,6 @@ var HistoryStore = function() {
 
       reset: function() {
         _initialize()
-        console.log("reset triggered");
         this.emit("gameReset")
       }
     });
