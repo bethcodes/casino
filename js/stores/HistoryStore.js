@@ -1,42 +1,69 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var PD = require("probability-distributions");
 
-var _histories = {};
+var HistoryStore = function() {
+    var banditIndexes = ["1", "2", "3", "4"]
+      , _histories = {}
+      , _payoffs = {}
+      , _totalUserScore = 0
+      ;
 
-var HistoryStore = assign({}, EventEmitter.prototype, {
-    /**
-     * @return a list of payoff value-count pairs for given bandit
-     **/
-    getHistory: function(bandit_id) {
-        return _histories[bandit_id] || {};
-    },
+      banditIndexes.forEach(function(index) {
+        _histories[index] = {};
+        _payoffs[index] = function() {
+            var mean = Math.floor(Math.random()*5)+1;
+            return Math.abs(Math.floor(PD.rnorm(1, mean, 1)[0]));
+        };
+      });
 
-  /**
-   * @param {function} callback
-   */
-  addChangeListener: function(callback) {
-    this.on("history_changed", callback);
-  },
+    return assign({}, EventEmitter.prototype, {
+        getBanditIndexes: function() {
+            return banditIndexes;
+        },
 
-  addPayoff: function(action) {
-    var history = _histories[action.bandit_id] || {};
+        getPayoffForBandit: function(bandit_id) {
+            return _payoffs[bandit_id]();
+        },
 
-      var initialValue = history[action.payoff];
-      history[action.payoff] = initialValue ? initialValue + 1 : 1
-      _histories[action.bandit_id] = history;
+        /**
+         * @return a list of payoff value-count pairs for given bandit
+         **/
+        getHistory: function(bandit_id) {
+            return _histories[bandit_id] || {};
+        },
 
-    this.emitChange();
-  },
+      /**
+       * @param {function} callback
+       */
+      addChangeListener: function(callback) {
+        this.on("history_changed", callback);
+      },
 
-  emitChange: function() {
-    this.emit("history_changed");
-  },
-});
+      getUserScore: function() {
+        return _totalUserScore;
+      },
+
+      addPayoff: function(action) {
+        var bandit_id = action.bandit_id
+          , payoff = this.getPayoffForBandit(bandit_id)
+          , history = _histories[bandit_id] || {};
+
+          _totalUserScore += payoff;
+
+          var initialValue = history[payoff];
+          history[payoff] = initialValue ? initialValue + 1 : 1
+          _histories[bandit_id] = history;
+
+        this.emit("history_changed");
+      }
+    });
+}();
 
 
 AppDispatcher.register(function(action) {
-    if(action.actionType !== "payoffAdded") {
+    if(action.actionType !== "pullMade") {
         return;
     }
     HistoryStore.addPayoff(action);

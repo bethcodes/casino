@@ -20,7 +20,10 @@ var Histogram = React.createClass({
           height: value*20
         };
         var keyString = "" + key;
-        return <div style={style} key={keyString}>{keyString}</div>;
+        return (<div className="history" key={keyString}>
+        <div className="label">{keyString}</div>
+        <div className="bar" style={style}></div>
+        </div>);
     },
 
     render: function() {

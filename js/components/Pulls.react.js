@@ -1,23 +1,28 @@
 var React = require('react');
 var $ = require('jQuery');
+var HistoryStore = require('../stores/HistoryStore');
 
 var Pulls = React.createClass({
+  componentWillMount: function() {
+    HistoryStore.addChangeListener(this.updatePullsRemaining);
+  },
+
   getInitialState: function() {
     return {
       pulls: 50
     };
   },
 
-  updatePullsRemaining: function(event, value) {
+  updatePullsRemaining: function() {
      if(this.state.pulls <= 1) {
         $(document).trigger("pullsComplete");
      }
      this.setState({pulls: this.state.pulls - 1});
   },
+
   render: function() {
-    $(document).on('pullMade', this.updatePullsRemaining);
     return (
-      <div className="counter">{this.state.pulls}</div>     
+      <div className="counter">Pulls Remaining: {this.state.pulls}</div>
     );
   }
 });

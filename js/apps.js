@@ -4,5 +4,5 @@ var CasinoApp = require('./components/CasinoApp.react');
 
 React.render(
   <CasinoApp />,
-  document.getElementById('casino')
+  document.getElementById('casino_app')
 );

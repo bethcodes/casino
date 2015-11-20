@@ -1,21 +1,26 @@
 
 var React = require('react');
 var $ = require('jQuery');
+var HistoryStore = require('../stores/HistoryStore');
 
 var Payoff = React.createClass({
+  componentWillMount: function() {
+    HistoryStore.addChangeListener(this.onPullMade);
+  },
+
   getInitialState: function() {
     return {
-      payoff: 0
+      payoff: HistoryStore.getUserScore()
     };
   },
+
   onPullMade: function(event, value) {
-    this.setState({payoff: this.state.payoff + value.payoff});
+    this.setState({payoff: HistoryStore.getUserScore()});
   },
+
   render: function() {
-    $(document).on("pullMade", this.onPullMade);
-    var text = this.props.type === "computer" ? "Computer's Score:" : "Score:";
     return (
-        <div className="payoff">{text} {this.state.payoff}</div>
+        <div className="payoff">Score: {this.state.payoff}</div>
     );
   }
 });

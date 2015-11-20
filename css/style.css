@@ -1,12 +1,22 @@
+body {
+    font-family: sans-serif;
+}
+
+.info {
+    margin: 10px;
+    padding: 5px;
+    border-bottom: solid 1px #eee;
+    font-size: 16px;
+}
+
 .counter {
   float:right;
 }
 
 .machine {
   background-color:black;
-  height:50px;
-  width:50px;
-  margin:10px;
+  height:150px;
+  width:100px;
 }
 
 .info {
@@ -17,14 +27,36 @@
 .casino {
   display:flex;
   flex-direction:row;
+  justify-content: space-around;
+  margin-top:20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.bandit {
+    margin: 0 15px;
 }
 
 .histogram {
+  color: #555;
   display:flex;
   flex-direction:row;
+  margin-top: 5px;
+  width: 100%;
+  min-height: 50px;
+  padding-left:1px;
 }
 
-.histogram div {
-    background-color: yellow;
-    margin: 1px;
+.histogram .history {
+    padding: 2px;
+}
+
+.histogram .label {
+
+}
+
+.histogram .bar {
+    background-color: #FFD436;
+    border-radius: 0 0 2px 2px;
+    width: 100%;
 }

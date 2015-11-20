@@ -1,18 +1,19 @@
 var React = require('react');
 var Bandit = require('./Bandit.react');
+var HistoryStore = require('../stores/HistoryStore');
 
 var Casino = React.createClass({
   /**
    * @return {object}
    */
    render: function() {
+     var Bandits = HistoryStore.getBanditIndexes().map(function(index){
+        return <Bandit index={index} key={index}/>;
+     });
      return (
        <div>
          <div className="casino">
-           <Bandit index="1"/>
-           <Bandit index="2"/>
-           <Bandit index="3"/>
-           <Bandit index="4"/>
+           {Bandits}
          </div>
        </div>
      );
