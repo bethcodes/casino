@@ -1,20 +1,36 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
-font-family: 'Montserrat', sans-serif;
-margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
 }
 
 .playAgain {
+    color: #333;
     position: fixed;
     bottom: 0;
     left: 50%;
+    background-color: #EEE;
     margin-left: -245px;
     border: solid 1px #555;
     border-bottom: none;
     padding: 20px 60px;
     font-size: 70px;
-    box-shadow: 0 0 15px #555;
+    box-shadow: 0 0 20px #555;
     white-space: nowrap;
-    background-color: #FFD436;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    transition: all 1s;
+}
+
+.playAgain:focus {
+    outline:0;
 }
 
 .info {
@@ -35,6 +51,14 @@ margin: 0;
   justify-content: center;
   align-items: center;
   background-image: url(/assets/slot_machine.png);
+  transition: all 1s;
+  border: none;
+  background-color: white;
+  padding: 0;
+}
+
+.machine:focus {
+    outline:0;
 }
 
 .machine.revealed {
@@ -42,11 +66,15 @@ margin: 0;
 }
 
 .average {
+  margin-top: -4px;
   margin-left: -37px;
   font-size: 160px;
   color: #FFD436;
   text-shadow: 0 0 20px #555;
     user-select: none;
+    transition: all 3s;
+    padding: 0;
+    line-height: 1;
 }
 
 .info {

@@ -1,5 +1,6 @@
 var React = require('react');
 var $ = require('jQuery');
+var Reset = require('../actions/Reset');
 
 
 var PlayAgain = React.createClass({
@@ -17,14 +18,16 @@ var PlayAgain = React.createClass({
     };
   },
 
+  handleClick: function(index) {
+    Reset.trigger();
+  },
+
   render: function() {
     if (this.state.revealed) {
-      return (<div className="playAgain">Play Again</div>);
+      return (<button className="playAgain">Play Again</button>);
     }
     return false;
   }
 });
-
-
 
 module.exports = PlayAgain;

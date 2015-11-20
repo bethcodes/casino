@@ -9,7 +9,7 @@ var Pulls = React.createClass({
 
   getInitialState: function() {
     return {
-      pulls: 25
+      pulls: 5
     };
   },
 

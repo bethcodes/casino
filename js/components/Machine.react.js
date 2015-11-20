@@ -17,7 +17,9 @@ var Machine = React.createClass({
   },
 
   handleClick: function(index) {
-    Payoff.add(this.props.index);
+    if (!this.state.revealed) {
+        Payoff.add(this.props.index);
+    }
   },
 
   playComplete: function() {
@@ -29,7 +31,7 @@ var Machine = React.createClass({
     if (!this.state.revealed) {
         return (
             <div>
-              <div className="machine" onClick={this.state.clickHandler}></div>
+              <button className="machine" onClick={this.state.clickHandler}></button>
             </div>
         );
     } else {
@@ -37,7 +39,7 @@ var Machine = React.createClass({
         var revealedDiv = (<div className="average">{revealedAverage}</div>);
         return (
             <div>
-              <div className="machine revealed" onClick={this.state.clickHandler}>{revealedDiv}</div>
+              <button className="machine revealed" onClick={this.state.clickHandler}>{revealedDiv}</button>
             </div>
         );
     }
