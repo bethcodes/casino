@@ -69,7 +69,7 @@ var Bot = React.createClass({
 
   render: function() {
     return (
-        <div className="payoff">Computer Score: {this.state.payoff}</div>
+        <div className="payoff">Computer Score: <span className="number">{this.state.payoff}</span></div>
     );
   }
 });

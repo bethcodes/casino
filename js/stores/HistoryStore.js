@@ -11,6 +11,7 @@ var HistoryStore = function() {
       , _averages
       , _totalUserScore
       , _pullsRemaining
+
       , _initialize = function() {
         _histories = {};
         _payoffs = {};
