@@ -1,1 +1,7 @@
-This website is an interactive exploration of the multi-armed bandit problem.
+This game allows the user to explore the multi-armed bandit problem and gain intuition about the trade-offs between exploration and commitment of resources.
+
+To build and run it, run:
+
+npm install
+npm start
+python -m SimpleHTTPServer
