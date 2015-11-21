@@ -21,7 +21,7 @@ var Payoff = React.createClass({
 
   render: function() {
     return (
-        <div className="payoff">Score: {this.state.payoff}</div>
+        <div className="payoff">Your Score: <span className="number">{this.state.payoff}</span></div>
     );
   }
 });

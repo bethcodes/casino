@@ -13,7 +13,7 @@ body {
     position: fixed;
     bottom: 0;
     left: 50%;
-    background-color: #EEE;
+    background-color: #EBEBEB;
     margin-left: -245px;
     border: solid 1px #555;
     border-bottom: none;
@@ -39,6 +39,7 @@ body {
 
 .playAgain:active {
     background-color: #BBB;
+    transition: all 0s;
 }
 
 .playAgain:focus {
@@ -70,12 +71,12 @@ body {
 }
 
 .machine:hover:not(.revealed) {
-  background-image: url(/assets/active_slot_machine.png);
+  background-image: url(/assets/light_slot_machine.png);
+  transition: all 0s;
 }
 
 .machine:active:not(.revealed) {
-  background-image: url(/assets/slot_machine.png);
-  transition: all 0s;
+  background-image: url(/assets/active_slot_machine.png);
 }
 
 .machine:focus {
@@ -114,6 +115,12 @@ body {
 
 .bandit {
     margin: 0 15px;
+}
+
+.number {
+    font-size: 28px;
+    margin-left: 5px;
+    margin-top: -5px;
 }
 
 .histogram {

@@ -19,7 +19,7 @@ var Pulls = React.createClass({
 
   render: function() {
     return (
-      <div className="counter">Pulls Remaining: {this.state.pulls}</div>
+      <div className="counter">Pulls Remaining: <span className="number">{this.state.pulls}</span></div>
     );
   }
 });
