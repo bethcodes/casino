@@ -1,6 +1,5 @@
 
 var React = require('react');
-var $ = require('jQuery');
 var HistoryStore = require('../stores/HistoryStore');
 
 var Bot = React.createClass({

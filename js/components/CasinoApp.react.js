@@ -6,6 +6,7 @@ var Bot = require('./Bot.react');
 var Histogram = require("./Histogram.react");
 var Casino = require("./Casino.react");
 var PlayAgain = require("./PlayAgain.react");
+var NextLevel = require("./NextLevel.react");
 
 var CasinoApp = React.createClass({
   /**
@@ -20,7 +21,10 @@ var CasinoApp = React.createClass({
            <Pulls />
          </div>
          <Casino />
-         <PlayAgain />
+         <div className="footer">
+            <PlayAgain />
+            <NextLevel />
+         </div>
        </div>
      );
    }

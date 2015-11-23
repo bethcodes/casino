@@ -1,6 +1,4 @@
 var React = require('react');
-var $ = require('jQuery');
-var PD = require("probability-distributions");
 var Pull = require("../actions/Pull");
 var HistoryStore = require('../stores/HistoryStore');
 

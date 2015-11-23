@@ -1,7 +1,6 @@
 
 var React = require('react');
 var HistoryStore = require('../stores/HistoryStore');
-var $ = require('jQuery');
 
 var Histogram = React.createClass({
     componentWillMount: function() {

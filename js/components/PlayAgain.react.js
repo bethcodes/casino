@@ -1,5 +1,4 @@
 var React = require('react');
-var $ = require('jQuery');
 var HistoryStore = require('../stores/HistoryStore');
 var Replay = require('../actions/Replay');
 
@@ -29,7 +28,7 @@ var PlayAgain = React.createClass({
   },
 
   render: function() {
-    var className = this.state.revealed ? "playAgain" : "playAgain hidden";
+    var className = this.state.revealed ? "playAgain advance" : "playAgain advance hidden";
     return (<button className={className} onClick={this.handleClick}>Play Again</button>);
   }
 });

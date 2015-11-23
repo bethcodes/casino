@@ -3,27 +3,46 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var PD = require("probability-distributions");
 
+var PayoffFunctions = function() {
+    var _min = 0
+      , _max = 7;
+    return {
+        unreliableFriend: function(mean) {
+            var val = PD.ruf(1);
+            console.log(val);
+            return Math.floor(PD.ruf(1)[0] * mean / _max)+1;
+        },
+        laplace: function(mean) {
+            return Math.abs(Math.floor(PD.rnorm(1, mean, 1)[0]));
+        },
+        skewed: function(mean) {
+            var skew = mean/2;
+            return Math.floor(PD.rbeta(1, skew, 3-skew)[0] * _max);
+        }
+    };
+}();
+
 var HistoryStore = function() {
     var banditIndexes = ["1", "2", "3", "4"]
-      , initialPulls = 50
+      , levels = [PayoffFunctions.laplace, PayoffFunctions.skewed, PayoffFunctions.unreliableFriend]
+      , initialPulls = 25
       , _histories
-      , _payoffs
+      , _payoffFunction = PayoffFunctions.laplace
       , _averages
       , _totalUserScore
       , _pullsRemaining
+      , _level = 0
 
       , _initialize = function() {
+        var means = PD.sample([1,2,3,4,5], banditIndexes.length, false)
         _histories = {};
-        _payoffs = {};
         _averages = {};
         _totalUserScore = 0;
         _pullsRemaining = initialPulls;
+
         banditIndexes.forEach(function(index) {
               _histories[index] = {};
-              _averages[index] = Math.floor(Math.random()*5)+1;
-              _payoffs[index] = function() {
-                  return Math.abs(Math.floor(PD.rnorm(1, _averages[index], 1)[0]));
-              };
+              _averages[index] = means.pop();
             });
         }
       ;
@@ -31,6 +50,10 @@ var HistoryStore = function() {
       _initialize()
 
     return assign({}, EventEmitter.prototype, {
+        hasNextLevel: function() {
+            return _level < levels.length-1;
+        },
+
         getPullsRemaining: function() {
             return _pullsRemaining;
         },
@@ -44,7 +67,7 @@ var HistoryStore = function() {
         },
 
         getPayoffForBandit: function(bandit_id) {
-            return _payoffs[bandit_id]();
+            return _payoffFunction(_averages[bandit_id]);
         },
 
         /**
@@ -79,6 +102,11 @@ var HistoryStore = function() {
         return _totalUserScore;
       },
 
+      advanceLevel: function() {
+        _level += 1;
+        _payoffFunction = levels[_level];
+      },
+
       executePull: function(action) {
         var bandit_id = action.bandit_id
           , payoff = this.getPayoffForBandit(bandit_id)
@@ -106,14 +134,24 @@ var HistoryStore = function() {
 
 HistoryStore.setMaxListeners(20);
 
+var EventMethods = {
+    pullMade: function(action) {HistoryStore.executePull(action)},
+    triggerReplay: function() {HistoryStore.reset()},
+    advanceLevel: function() {
+        HistoryStore.advanceLevel()
+        HistoryStore.reset()
+    }
+};
+
 AppDispatcher.register(function(action) {
-    if(action.actionType === "pullMade") {
-        HistoryStore.executePull(action);
+    var eventName = action.actionType;
+    if(!EventMethods[eventName]) {
+        console.log("invalid event found in HistoryStore: "+eventName);
+        return;
     }
 
-    if(action.actionType === "triggerReplay") {
-        HistoryStore.reset();
-    }
+    EventMethods[eventName](action);
+    return;
 });
 
 module.exports = HistoryStore;
