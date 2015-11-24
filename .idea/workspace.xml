@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7721f1e2-f65a-4744-b592-b2d972d6868a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/actions/ChangeLevel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/components/NextLevel.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Bot.react.js" afterPath="$PROJECT_DIR$/js/components/Bot.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/CasinoApp.react.js" afterPath="$PROJECT_DIR$/js/components/CasinoApp.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Histogram.react.js" afterPath="$PROJECT_DIR$/js/components/Histogram.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Machine.react.js" afterPath="$PROJECT_DIR$/js/components/Machine.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Payoff.react.js" afterPath="$PROJECT_DIR$/js/components/Payoff.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/PlayAgain.react.js" afterPath="$PROJECT_DIR$/js/components/PlayAgain.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Pulls.react.js" afterPath="$PROJECT_DIR$/js/components/Pulls.react.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stores/HistoryStore.js" afterPath="$PROJECT_DIR$/js/stores/HistoryStore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="casino.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +23,7 @@
     <favorites_list name="casino" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.46047583">
+    <splitter split-orientation="horizontal" split-proportion="0.35149655">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ChangeLevel.js" pinned="false" current-in-tab="false">
@@ -60,7 +49,7 @@
           <file leaf-file-name="PlayAgain.react.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/components/PlayAgain.react.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6213018">
+                <state vertical-scroll-proportion="0.94254935">
                   <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
                   <folding />
                 </state>
@@ -84,8 +73,8 @@
           <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8165681">
-                  <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+                <state vertical-scroll-proportion="0.59605026">
+                  <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -94,8 +83,8 @@
           <file leaf-file-name="HistoryStore.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-21.11111">
-                  <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+                <state vertical-scroll-proportion="-4.4444447">
+                  <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
                   <folding />
                 </state>
               </provider>
@@ -145,10 +134,10 @@
         <option value="$PROJECT_DIR$/js/components/Pulls.react.js" />
         <option value="$PROJECT_DIR$/js/bundle.js" />
         <option value="$PROJECT_DIR$/js/actions/ChangeLevel.js" />
-        <option value="$PROJECT_DIR$/js/stores/HistoryStore.js" />
         <option value="$PROJECT_DIR$/js/components/CasinoApp.react.js" />
         <option value="$PROJECT_DIR$/js/components/NextLevel.react.js" />
         <option value="$PROJECT_DIR$/js/components/PlayAgain.react.js" />
+        <option value="$PROJECT_DIR$/js/stores/HistoryStore.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
       </list>
     </option>
@@ -625,6 +614,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16151866" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -635,7 +625,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -707,6 +696,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -773,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -853,6 +844,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7554672">
           <caret line="21148" column="3" selection-start-line="21148" selection-start-column="3" selection-end-line="21148" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -881,6 +873,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026929982">
           <caret line="1" column="7" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -914,14 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.11111">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/components/CasinoApp.react.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -940,16 +925,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/components/PlayAgain.react.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6213018">
+        <state vertical-scroll-proportion="0.94254935">
           <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4444447">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8165681">
-          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.59605026">
+          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
           <folding />
         </state>
       </provider>

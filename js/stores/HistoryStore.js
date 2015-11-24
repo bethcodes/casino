@@ -5,44 +5,64 @@ var PD = require("probability-distributions");
 
 var PayoffFunctions = function() {
     var _min = 0
-      , _max = 7;
-    return {
-        unreliableFriend: function(mean) {
-            var val = PD.ruf(1);
-            console.log(val);
-            return Math.floor(PD.ruf(1)[0] * mean / _max)+1;
-        },
-        laplace: function(mean) {
+      , _max = 7
+
+        , unreliableFriend= function(mean) {
+            console.log("unreliable friends!");
+            return Math.floor(PD.ruf(1)[0] * mean / 3)+1;
+        }
+        , laplace = function(mean) {
             return Math.abs(Math.floor(PD.rnorm(1, mean, 1)[0]));
-        },
-        skewed: function(mean) {
+        }
+        , skew = function(mean) {
             var skew = mean/2;
             return Math.floor(PD.rbeta(1, skew, 3-skew)[0] * _max);
+        }
+        , levels = [laplace, skew, unreliableFriend]
+        ;
+    return {
+        getPayoffFunction: function(level) {
+            if (level==2) {
+                return PD.sample([unreliableFriend, skew], 1, [0.2, 0.8])[0];
+            };
+            return levels[level];
+        },
+
+        getNumberOfLevels: function() {
+            return levels.length;
         }
     };
 }();
 
+function Bandit(bandit_id, average, payoffFunction) {
+    this.id = bandit_id;
+    this.average = average;
+    this.history = {};
+    this.payoffFunction = payoffFunction;
+    this.getPayoff = function() {
+        return this.payoffFunction(this.average);
+    };
+    this.addPayoff = function(payoff) {
+      var initialValue = this.history[payoff];
+      this.history[payoff] = initialValue ? initialValue + 1 : 1;
+    }
+};
+
 var HistoryStore = function() {
     var banditIndexes = ["1", "2", "3", "4"]
-      , levels = [PayoffFunctions.laplace, PayoffFunctions.skewed, PayoffFunctions.unreliableFriend]
       , initialPulls = 25
-      , _histories
-      , _payoffFunction = PayoffFunctions.laplace
-      , _averages
       , _totalUserScore
       , _pullsRemaining
       , _level = 0
+      , _bandits = {}
 
       , _initialize = function() {
         var means = PD.sample([1,2,3,4,5], banditIndexes.length, false)
-        _histories = {};
-        _averages = {};
         _totalUserScore = 0;
         _pullsRemaining = initialPulls;
 
         banditIndexes.forEach(function(index) {
-              _histories[index] = {};
-              _averages[index] = means.pop();
+              _bandits[index] = new Bandit(index, means.pop(), PayoffFunctions.getPayoffFunction(_level));
             });
         }
       ;
@@ -51,7 +71,7 @@ var HistoryStore = function() {
 
     return assign({}, EventEmitter.prototype, {
         hasNextLevel: function() {
-            return _level < levels.length-1;
+            return _level < PayoffFunctions.getNumberOfLevels()-1;
         },
 
         getPullsRemaining: function() {
@@ -63,18 +83,18 @@ var HistoryStore = function() {
         },
 
         getAverage: function(bandit_id) {
-            return _averages[bandit_id];
+            return _bandits[bandit_id].average;
         },
 
         getPayoffForBandit: function(bandit_id) {
-            return _payoffFunction(_averages[bandit_id]);
+            return _bandits[bandit_id].getPayoff();
         },
 
         /**
          * @return a list of payoff value-count pairs for given bandit
          **/
         getHistory: function(bandit_id) {
-            return _histories[bandit_id] || {};
+            return _bandits[bandit_id].history;
         },
 
       /**
@@ -104,23 +124,20 @@ var HistoryStore = function() {
 
       advanceLevel: function() {
         _level += 1;
-        _payoffFunction = levels[_level];
       },
 
       executePull: function(action) {
         var bandit_id = action.bandit_id
           , payoff = this.getPayoffForBandit(bandit_id)
-          , history = _histories[bandit_id] || {};
+          ;
 
-          _totalUserScore += payoff;
-          _pullsRemaining -= 1;
-          if(_pullsRemaining <= 0) {
-            this.emit("gameOver");
-          }
+        _totalUserScore += payoff;
+        _pullsRemaining -= 1;
+        if(_pullsRemaining <= 0) {
+          this.emit("gameOver");
+        }
 
-          var initialValue = history[payoff];
-          history[payoff] = initialValue ? initialValue + 1 : 1
-          _histories[bandit_id] = history;
+        _bandits[bandit_id].addPayoff(payoff);
 
         this.emit("historyChanged");
       },
@@ -135,8 +152,12 @@ var HistoryStore = function() {
 HistoryStore.setMaxListeners(20);
 
 var EventMethods = {
-    pullMade: function(action) {HistoryStore.executePull(action)},
-    triggerReplay: function() {HistoryStore.reset()},
+    pullMade: function(action) {
+        HistoryStore.executePull(action);
+    },
+    triggerReplay: function() {
+        HistoryStore.reset();
+    },
     advanceLevel: function() {
         HistoryStore.advanceLevel()
         HistoryStore.reset()
