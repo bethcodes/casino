@@ -2,14 +2,16 @@
 var React = require('react');
 var HistoryStore = require('../stores/HistoryStore');
 
+var BELIEF_ID = "greedy";
+
 var Bot = React.createClass({
   componentWillMount: function() {
-    HistoryStore.addChangeListener(this.onPullMade);
-    HistoryStore.addGameResetListener(this.reset);
+    HistoryStore.addChangeListener(this.props.game, this.onPullMade);
+    HistoryStore.addGameResetListener(this.props.game, this.reset);
   },
 
   getInitialBeliefs: function() {
-    var bandits = HistoryStore.getBanditIndexes();
+    var bandits = HistoryStore.getGame(this.props.game).getBanditIndexes();
     var beliefs = {}
     bandits.forEach(function(bandit_id) {
         beliefs[bandit_id] = {
@@ -60,9 +62,8 @@ var Bot = React.createClass({
 
   onPullMade: function() {
     var bandit_id = this.getNextPull();
-    var payoff = HistoryStore.getPayoffForBandit(bandit_id);
+    var payoff = HistoryStore.getGame(this.props.game).getPayoffForBandit(bandit_id);
     var newBeliefs = this.updatedBeliefs(bandit_id, payoff);
-
     this.setState({payoff: this.state.payoff + payoff, beliefs: newBeliefs});
   },
 

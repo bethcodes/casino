@@ -7,9 +7,9 @@ var Casino = React.createClass({
    * @return {object}
    */
    render: function() {
-     var Bandits = HistoryStore.getBanditIndexes().map(function(index){
-        return <Bandit index={index} key={index}/>;
-     });
+     var Bandits = HistoryStore.getGame(this.props.game).getBanditIndexes().map(function(index){
+        return <Bandit {...this.props} banditIndex={index} key={index}/>;
+     }.bind(this));
      return (
        <div>
          <div className="casino">

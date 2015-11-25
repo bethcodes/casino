@@ -4,8 +4,8 @@ var HistoryStore = require('../stores/HistoryStore');
 
 var Machine = React.createClass({
   componentWillMount: function() {
-    HistoryStore.addGameEndedListener(this.playComplete);
-    HistoryStore.addGameResetListener(this.reset);
+    HistoryStore.addGameEndedListener(this.props.game, this.playComplete);
+    HistoryStore.addGameResetListener(this.props.game, this.reset);
   },
 
   getInitialState: function() {
@@ -15,9 +15,9 @@ var Machine = React.createClass({
     };
   },
 
-  handleClick: function(index) {
+  handleClick: function() {
     if (!this.state.revealed) {
-        Pull.trigger(this.props.index);
+        Pull.trigger(this.props.banditIndex, this.props.game);
     }
   },
 
@@ -33,8 +33,10 @@ var Machine = React.createClass({
     var content = "";
     var className = "machine";
     if (this.state.revealed) {
-        var revealedAverage = HistoryStore.getAverage(this.props.index);
-        content = (<div className="average">{revealedAverage}</div>);
+        var revealedAverage = HistoryStore.getGame(this.props.game).getAverage(this.props.banditIndex);
+        var isHighRisk = HistoryStore.getGame(this.props.game).getHighRisk(this.props.banditIndex);
+        var numberClassName = isHighRisk ? "average highRisk" : "average";
+        content = (<div className={numberClassName}>{revealedAverage}</div>);
         className += " revealed";
     }
 

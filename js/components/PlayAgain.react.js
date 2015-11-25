@@ -5,8 +5,8 @@ var Replay = require('../actions/Replay');
 
 var PlayAgain = React.createClass({
   componentWillMount: function() {
-    HistoryStore.addGameEndedListener(this.reveal);
-    HistoryStore.addGameResetListener(this.hide);
+    HistoryStore.addGameEndedListener(this.props.game, this.reveal);
+    HistoryStore.addGameResetListener(this.props.game, this.hide);
   },
 
   hide: function() {
@@ -24,7 +24,7 @@ var PlayAgain = React.createClass({
   },
 
   handleClick: function(index) {
-    Replay.trigger();
+    Replay.trigger(this.props.game);
   },
 
   render: function() {

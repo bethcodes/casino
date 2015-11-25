@@ -5,8 +5,8 @@ var ChangeLevel = require('../actions/ChangeLevel');
 
 var NextLevel = React.createClass({
     componentWillMount: function() {
-        HistoryStore.addGameEndedListener(this.reveal);
-        HistoryStore.addGameResetListener(this.hide);
+        HistoryStore.addGameEndedListener(this.props.game, this.reveal);
+        HistoryStore.addGameResetListener(this.props.game, this.hide);
     },
 
     hide: function() {
@@ -23,12 +23,16 @@ var NextLevel = React.createClass({
     };
   },
 
+  advance: function() {
+    ChangeLevel.advance(this.props.game);
+  },
+
     render: function() {
-        if(!HistoryStore.hasNextLevel() || !this.state.revealed) {
+        if(!HistoryStore.getGame(this.props.game).hasNextLevel() || !this.state.revealed) {
             return false;
         }
 
-        return <button className="nextLevel advance" onClick={ChangeLevel.advance}>Next Level</button>;
+        return <button className="nextLevel advance" onClick={this.advance}>Next Level</button>;
     }
 });
 

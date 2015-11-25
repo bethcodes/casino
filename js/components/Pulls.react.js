@@ -3,17 +3,17 @@ var HistoryStore = require('../stores/HistoryStore');
 
 var Pulls = React.createClass({
   componentWillMount: function() {
-    HistoryStore.addChangeListener(this.updatePullsRemaining);
+    HistoryStore.addChangeListener(this.props.game, this.updatePullsRemaining);
   },
 
   getInitialState: function() {
     return {
-      pulls: HistoryStore.getPullsRemaining()
+      pulls: HistoryStore.getGame(this.props.game).getPullsRemaining()
     };
   },
 
   updatePullsRemaining: function() {
-     this.setState({pulls: HistoryStore.getPullsRemaining()});
+     this.setState({pulls: HistoryStore.getGame(this.props.game).getPullsRemaining()});
   },
 
   render: function() {

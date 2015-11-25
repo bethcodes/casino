@@ -1,9 +1,10 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var Replay = {
-    trigger: function() {
+    trigger: function(game_id) {
         AppDispatcher.dispatch({
-          actionType: "triggerReplay"
+          actionType: "triggerReplay",
+          gameId: game_id
         });
     }
 };

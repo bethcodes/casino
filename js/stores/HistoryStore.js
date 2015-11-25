@@ -6,161 +6,251 @@ var PD = require("probability-distributions");
 var PayoffFunctions = function() {
     var _min = 0
       , _max = 7
+      , unreliableFriend = function() {
+          return {
+            funct: function(mean) {
+                return Math.floor(PD.ruf(1)[0] * mean / 5)+1;
+            },
+            highRisk: true
+          };
+        }
+      , laplace = function() {
+          return {
+              funct: function(mean) {
+                return Math.abs(Math.floor(PD.rnorm(1, mean, 1)[0]));
+              },
+              highRisk: false
+          };
+        }
+      , skew = function() {
+        return {
+            funct: function(mean) {
+                return Math.floor(PD.rbeta(1, mean + 3, 9-mean)[0] * _max);
+            },
+            highRisk: false
+        };
+      }
 
-        , unreliableFriend= function(mean) {
-            console.log("unreliable friends!");
-            return Math.floor(PD.ruf(1)[0] * mean / 3)+1;
+      , risky = function() {
+            var highRisk = PD.sample([true, false], 1, true, [0.2, 0.8])[0];
+            return highRisk? unreliableFriend() : skew();
+      }
+
+      , _gameTypes = {
+        levels: function(level) {
+             var levels = [laplace, skew, risky];
+             return levels[level]();
         }
-        , laplace = function(mean) {
-            return Math.abs(Math.floor(PD.rnorm(1, mean, 1)[0]));
+        , first: function() {
+            return laplace();
         }
-        , skew = function(mean) {
-            var skew = mean/2;
-            return Math.floor(PD.rbeta(1, skew, 3-skew)[0] * _max);
+        , second: function() {
+            return skew();
         }
-        , levels = [laplace, skew, unreliableFriend]
-        ;
+        , third: function() {
+            return risky();
+        }
+      }
+    ;
+
     return {
-        getPayoffFunction: function(level) {
-            if (level==2) {
-                return PD.sample([unreliableFriend, skew], 1, [0.2, 0.8])[0];
-            };
-            return levels[level];
+        getMaxLevel: function(gameType) {
+            return gameType == "levels" ? 2 : 0;
         },
-
-        getNumberOfLevels: function() {
-            return levels.length;
+        getType: function(gameType, level) {
+            return _gameTypes[gameType](level);
         }
     };
 }();
+
+function times(n, iterator) {
+  var accum = Array(Math.max(0, n));
+  for (var i = 0; i < n; i++) accum[i] = iterator.call();
+  return accum;
+};
 
 function Bandit(bandit_id, average, payoffFunction) {
     this.id = bandit_id;
     this.average = average;
     this.history = {};
-    this.payoffFunction = payoffFunction;
-    this.getPayoff = function() {
+    this.payoffFunction = payoffFunction.funct;
+    this.isHighRisk = payoffFunction.highRisk;
+    this.beliefs = {};
+    this.payoffByRound = times(25, function() {
         return this.payoffFunction(this.average);
+    }.bind(this));
+    this.getPayoff = function(round) {
+        return this.payoffByRound[round];
     };
     this.addPayoff = function(payoff) {
       var initialValue = this.history[payoff];
       this.history[payoff] = initialValue ? initialValue + 1 : 1;
-    }
+    };
 };
 
-var HistoryStore = function() {
-    var banditIndexes = ["1", "2", "3", "4"]
-      , initialPulls = 25
-      , _totalUserScore
-      , _pullsRemaining
-      , _level = 0
-      , _bandits = {}
+function Play(banditIndexes, pulls, level, payoffFunctionGenerator) {
+    this.totalUserScore = 0;
+    this.scores = {};
+    this.pullsRemaining = pulls;
+    this.level = level;
+    this.beliefs = [];
 
-      , _initialize = function() {
-        var means = PD.sample([1,2,3,4,5], banditIndexes.length, false)
-        _totalUserScore = 0;
-        _pullsRemaining = initialPulls;
+    var means = PD.sample([1,2,3,4,5,6], banditIndexes.length, false);
+    this.bandits = {};
+    banditIndexes.forEach(function(index) {
+        this.bandits[index] = new Bandit(index, means.pop(), payoffFunctionGenerator());
+    }.bind(this));
 
-        banditIndexes.forEach(function(index) {
-              _bandits[index] = new Bandit(index, means.pop(), PayoffFunctions.getPayoffFunction(_level));
-            });
+    this.executePull = function(bandit_id) {
+        this.pullsRemaining -= 1;
+
+        payoff = this.bandits[bandit_id].getPayoff(this.pullsRemaining);
+        this.totalUserScore += payoff;
+        this.bandits[bandit_id].addPayoff(payoff);
+        this.beliefs.forEach(function(belief_id) {
+            this.pullMadeForBelief(belief_id);
+        }.bind(this));
+    };
+};
+
+function Game(id) {
+    var initialPulls = 25;
+    this.banditIndexes = ["1", "2", "3", "4"];
+
+    this.id = id;
+    this.level=0;
+    this.advanceLevel = function() {
+        if(this.level < PayoffFunctions.getMaxLevel(this.id)) {
+            this.level += 1;
         }
-      ;
+    };
 
-      _initialize()
+    var buildPayoffFunction = function(gameType, currentLevel) {
+        var level = currentLevel
+          , type = gameType;
+        return function() {
+            return PayoffFunctions.getType(type, level);
+        };
+    };
+
+    this.reset = function() {
+        this.play = new Play(this.banditIndexes, initialPulls, this.level, buildPayoffFunction(this.id, this.level));
+    };
+
+    this.reset();
+
+    this.hasNextLevel = function() {
+        return this.level < PayoffFunctions.getMaxLevel(this.id);
+    };
+
+    this.getPullsRemaining = function() {
+        return this.play.pullsRemaining;
+    };
+
+    this.getBanditIndexes = function() {
+        return this.banditIndexes;
+    };
+
+    this.getAverage = function(bandit_id) {
+        return this.play.bandits[bandit_id].average;
+    };
+
+    this.getHighRisk = function(bandit_id) {
+        return this.play.bandits[bandit_id].isHighRisk;
+    };
+
+    this.getPayoffForBandit = function(bandit_id) {
+        return this.play.bandits[bandit_id].getPayoff(this.play.pullsRemaining);
+    };
+
+    /**
+     * @return a list of payoff value-count pairs for given bandit
+     **/
+    this.getHistory = function(bandit_id) {
+        return this.play.bandits[bandit_id].history;
+    };
+
+    this.getUserScore = function() {
+        return this.play.totalUserScore;
+    };
+
+    this.playOver = function() {
+        return this.play.pullsRemaining <= 0;
+    };
+
+    this.executePull = function(bandit_id) {
+         this.play.executePull(bandit_id);
+    };
+}
+
+var HistoryStore = function() {
+    var _games = {};
 
     return assign({}, EventEmitter.prototype, {
-        hasNextLevel: function() {
-            return _level < PayoffFunctions.getNumberOfLevels()-1;
+        getGame: function(game_id) {
+            if (!game_id) {
+                console.log("missing game id!");
+                return;
+            }
+
+            if (!_games[game_id]) {
+                _games[game_id] = new Game(game_id);
+            }
+
+            return _games[game_id];
         },
 
-        getPullsRemaining: function() {
-            return _pullsRemaining;
+        addChangeListener: function(game_id, callback) {
+            this.on("historyChanged"+game_id, callback);
         },
 
-        getBanditIndexes: function() {
-            return banditIndexes;
+        addGameEndedListener: function(game_id, callback) {
+            this.on("gameOver"+game_id, callback);
         },
 
-        getAverage: function(bandit_id) {
-            return _bandits[bandit_id].average;
+        addGameResetListener: function(game_id, callback) {
+            this.on("gameReset"+game_id, callback);
         },
 
-        getPayoffForBandit: function(bandit_id) {
-            return _bandits[bandit_id].getPayoff();
+        advanceLevel: function(action) {
+            this.getGame(action.gameId).advanceLevel();
         },
-
-        /**
-         * @return a list of payoff value-count pairs for given bandit
-         **/
-        getHistory: function(bandit_id) {
-            return _bandits[bandit_id].history;
-        },
-
-      /**
-       * @param {function} callback
-       */
-      addChangeListener: function(callback) {
-        this.on("historyChanged", callback);
-      },
-
-      /**
-       * @param {function} callback
-       */
-      addGameEndedListener: function(callback) {
-        this.on("gameOver", callback);
-      },
-
-      /**
-       * @param {function} callback
-       */
-      addGameResetListener: function(callback) {
-        this.on("gameReset", callback);
-      },
-
-      getUserScore: function() {
-        return _totalUserScore;
-      },
-
-      advanceLevel: function() {
-        _level += 1;
-      },
 
       executePull: function(action) {
         var bandit_id = action.bandit_id
-          , payoff = this.getPayoffForBandit(bandit_id)
+          , game_id = action.gameId
+          , game = this.getGame(game_id)
           ;
 
-        _totalUserScore += payoff;
-        _pullsRemaining -= 1;
-        if(_pullsRemaining <= 0) {
-          this.emit("gameOver");
+        game.executePull(bandit_id);
+
+        if(game.playOver()) {
+          this.emit("gameOver"+game_id);
         }
 
-        _bandits[bandit_id].addPayoff(payoff);
-
-        this.emit("historyChanged");
+        this.emit("historyChanged"+game_id);
       },
 
-      reset: function() {
-        _initialize()
-        this.emit("gameReset")
+      reset: function(action) {
+        var game_id = action.gameId;
+        this.getGame(game_id).reset();
+        this.emit("gameReset"+game_id)
       }
     });
 }();
 
-HistoryStore.setMaxListeners(20);
+HistoryStore.setMaxListeners(200);
 
 var EventMethods = {
     pullMade: function(action) {
         HistoryStore.executePull(action);
     },
-    triggerReplay: function() {
-        HistoryStore.reset();
+    triggerReplay: function(action) {
+        HistoryStore.reset(action);
     },
-    advanceLevel: function() {
-        HistoryStore.advanceLevel()
-        HistoryStore.reset()
+    advanceLevel: function(action) {
+        HistoryStore.advanceLevel(action)
+        HistoryStore.reset(action)
     }
 };
 

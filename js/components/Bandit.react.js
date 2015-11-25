@@ -7,8 +7,8 @@ var Bandit = React.createClass({
   render: function() {
     return (
         <div className="bandit">
-           <Machine index={this.props.index} />
-           <Histogram index={this.props.index} />
+           <Machine {...this.props} />
+           <Histogram {...this.props} />
         </div>
     );
   }

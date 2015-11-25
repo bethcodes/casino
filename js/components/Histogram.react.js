@@ -4,15 +4,15 @@ var HistoryStore = require('../stores/HistoryStore');
 
 var Histogram = React.createClass({
     componentWillMount: function() {
-      HistoryStore.addChangeListener(this.historyUpdated);
-      HistoryStore.addGameResetListener(this.historyUpdated);
+      HistoryStore.addChangeListener(this.props.game, this.historyUpdated);
+      HistoryStore.addGameResetListener(this.props.game, this.historyUpdated);
     },
     getInitialState: function() {
       return {history: {}};
     },
 
     historyUpdated: function() {
-        this.setState({history: HistoryStore.getHistory(this.props.index)});
+        this.setState({history: HistoryStore.getGame(this.props.game).getHistory(this.props.banditIndex)});
     },
 
     buildBar: function(key, value) {

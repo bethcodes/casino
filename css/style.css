@@ -1,11 +1,14 @@
 html, body {
   height: 100%;
   overflow: hidden;
+  margin: 0;
 }
 
-body {
+#casino_app {
   font-family: 'Montserrat', sans-serif;
-  margin: 0;
+}
+
+.pageContent {
 }
 
 body:after{
@@ -15,9 +18,10 @@ body:after{
 
 .footer {
     display: flex;
-    position: fixed;
+    position: absolute;
     justify-content: space-around;
-    width: 100%;
+    left: 0;
+    right: 0;
     bottom: 0;
 }
 
@@ -105,6 +109,10 @@ body:after{
     transition: all 3s;
     padding: 0;
     line-height: 1;
+}
+
+.average.highRisk {
+    color: #ee6b3f;
 }
 
 .info {

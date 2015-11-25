@@ -1,9 +1,10 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var ChangeLevel = {
-    advance: function() {
+    advance: function(game_id) {
         AppDispatcher.dispatch({
-          actionType: "advanceLevel"
+          actionType: "advanceLevel",
+          gameId: game_id
         });
     }
 };
