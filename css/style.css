@@ -1,14 +1,24 @@
 html, body {
   height: 100%;
-  overflow: hidden;
   margin: 0;
-}
-
-#casino_app {
   font-family: 'Montserrat', sans-serif;
 }
 
-.pageContent {
+#casino_app {
+  overflow: hidden;
+}
+
+#explore_app .text {
+    padding: 50px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#explore_app .gameContent {
+    position: relative;
+    height: 500px;
+    border: solid 1px #ccc;
+    margin: 5px;
+    padding: 5px;
 }
 
 body:after{
@@ -23,6 +33,15 @@ body:after{
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+#explore_app .footer {
+    bottom: 20px;
+}
+
+#explore_app .advance {
+    border-bottom: solid 1px #555;
+    font-size: 45px;
 }
 
 .advance {

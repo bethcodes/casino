@@ -12,7 +12,7 @@ var Game = React.createClass({
    */
    render: function() {
      return (
-       <div className="pageContent">
+       <div className="gameContent">
          <div className="info">
            <Payoff {...this.props} type="user"/>
            <Bot {...this.props} type="computer"/>

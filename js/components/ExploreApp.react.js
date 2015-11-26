@@ -8,13 +8,13 @@ var ExploreApp = React.createClass({
    render: function() {
      return (
        <div className="pageContent">
-         <div>Text goes here</div>
+         <div className="text">Text goes here</div>
          <Game game="first" />
-         <div> Text goes here</div>
+         <div className="text"> Text goes here</div>
          <Game game="second" />
-         <div> Text goes here</div>
+         <div className="text"> Text goes here</div>
          <Game game="third" />
-         <div> Text goes here</div>
+         <div className="text"> Text goes here</div>
        </div>
      );
    }
