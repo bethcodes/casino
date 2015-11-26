@@ -6,6 +6,7 @@ var PD = require("probability-distributions");
 var PayoffFunctions = function() {
     var _min = 0
       , _max = 7
+      , _riskyDistribution = PD.sample([true, false, false, false], 4, false)
       , unreliableFriend = function() {
           return {
             funct: function(mean) {
@@ -32,7 +33,10 @@ var PayoffFunctions = function() {
       }
 
       , risky = function() {
-            var highRisk = PD.sample([true, false], 1, true, [0.2, 0.8])[0];
+            if (_riskyDistribution.length == 0) {
+                _riskyDistribution = PD.sample([true, false, false, false], 4, false)
+            }
+            var highRisk = _riskyDistribution.pop();
             return highRisk? unreliableFriend() : skew();
       }
 

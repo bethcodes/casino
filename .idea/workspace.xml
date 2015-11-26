@@ -4,7 +4,7 @@
     <list default="true" id="7721f1e2-f65a-4744-b592-b2d972d6868a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/ExploreApp.react.js" afterPath="$PROJECT_DIR$/js/components/ExploreApp.react.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/stores/HistoryStore.js" afterPath="$PROJECT_DIR$/js/stores/HistoryStore.js" />
     </list>
     <ignored path="casino.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,11 +141,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="HistoryStore.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="HistoryStore.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-2.1851852">
-                  <caret line="91" column="28" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+                <state vertical-scroll-proportion="0.8070501">
+                  <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
@@ -165,17 +165,17 @@
             <entry file="file://$PROJECT_DIR$/js/components/ExploreApp.react.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+                  <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3180212">
-                  <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
@@ -229,11 +229,11 @@
         <option value="$PROJECT_DIR$/js/components/PlayAgain.react.js" />
         <option value="$PROJECT_DIR$/js/components/Pulls.react.js" />
         <option value="$PROJECT_DIR$/js/components/CasinoApp.react.js" />
-        <option value="$PROJECT_DIR$/js/stores/HistoryStore.js" />
         <option value="$PROJECT_DIR$/js/components/Game.react.js" />
         <option value="$PROJECT_DIR$/explore.html" />
         <option value="$PROJECT_DIR$/js/components/ExploreApp.react.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/js/stores/HistoryStore.js" />
       </list>
     </option>
   </component>
@@ -1042,22 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1851852">
-          <caret line="91" column="28" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/components/CasinoApp.react.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/components/Game.react.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37102473">
@@ -1070,14 +1054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/apps.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1098,7 +1074,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/components/ExploreApp.react.js">
+    <entry file="file://$PROJECT_DIR$/js/apps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/components/CasinoApp.react.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
@@ -1106,10 +1098,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/js/components/ExploreApp.react.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3180212">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/stores/HistoryStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8070501">
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
           <folding />
         </state>
       </provider>

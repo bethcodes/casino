@@ -14,12 +14,18 @@ html, body {
     max-width: 800px;
 }
 
+#explore_app {
+    display: flex;
+    justify-content: space-around;
+}
+
 #explore_app .gameContent {
     position: relative;
     height: 500px;
     border: solid 1px #ccc;
     margin: 5px;
     padding: 5px;
+    max-width: 1100px;
 }
 
 #explore_app .text p {
