@@ -10,7 +10,8 @@ html, body {
 
 #explore_app .text {
     padding: 50px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font: 18.0px Source Sans Pro;
+    max-width: 800px;
 }
 
 #explore_app .gameContent {
@@ -19,6 +20,10 @@ html, body {
     border: solid 1px #ccc;
     margin: 5px;
     padding: 5px;
+}
+
+#explore_app .text p {
+    margin-bottom: 14px;
 }
 
 body:after{

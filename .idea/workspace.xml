@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7721f1e2-f65a-4744-b592-b2d972d6868a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/explore.html" afterPath="$PROJECT_DIR$/explore.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/ExploreApp.react.js" afterPath="$PROJECT_DIR$/js/components/ExploreApp.react.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/components/Game.react.js" afterPath="$PROJECT_DIR$/js/components/Game.react.js" />
     </list>
     <ignored path="casino.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +24,7 @@
     <favorites_list name="casino" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.42556283">
+    <splitter split-orientation="horizontal" split-proportion="0.51488745">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ChangeLevel.js" pinned="false" current-in-tab="false">
@@ -108,11 +107,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Bot.react.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Bot.react.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/components/Bot.react.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.13250883">
-                  <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="text.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/text.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.8302583">
+                  <caret line="47" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -156,27 +165,27 @@
             <entry file="file://$PROJECT_DIR$/js/components/ExploreApp.react.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+                  <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+                <state vertical-scroll-proportion="0.3180212">
+                  <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="explore.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="explore.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/explore.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.13837638">
-                  <caret line="5" column="82" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
+                <state vertical-scroll-proportion="-3.125">
+                  <caret line="5" column="82" selection-start-line="5" selection-start-column="68" selection-end-line="5" selection-end-column="82" />
                   <folding />
                 </state>
               </provider>
@@ -222,9 +231,9 @@
         <option value="$PROJECT_DIR$/js/components/CasinoApp.react.js" />
         <option value="$PROJECT_DIR$/js/stores/HistoryStore.js" />
         <option value="$PROJECT_DIR$/js/components/Game.react.js" />
+        <option value="$PROJECT_DIR$/explore.html" />
         <option value="$PROJECT_DIR$/js/components/ExploreApp.react.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/explore.html" />
       </list>
     </option>
   </component>
@@ -421,7 +430,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/text.html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1059,16 +1068,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/components/Bot.react.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13250883">
-          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/components/ExploreApp.react.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1081,18 +1082,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/text.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.8302583">
+          <caret line="47" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/explore.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13837638">
-          <caret line="5" column="82" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
+        <state vertical-scroll-proportion="-3.125">
+          <caret line="5" column="82" selection-start-line="5" selection-start-column="68" selection-end-line="5" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/components/ExploreApp.react.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3180212">
+          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
           <folding />
         </state>
       </provider>
